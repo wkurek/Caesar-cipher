@@ -1,1 +1,43 @@
+#include <iostream>
+#include <fstream>
 
+#include "Cipher.h"
+#include "StreamReader.h"
+
+using namespace std;
+
+StreamReader::StreamReader(string path, Cipher& cipher)
+{
+    this->cipher = &cipher;
+    this->path = path;
+}
+
+
+void StreamReader::read()
+{
+    fstream readStream;
+    readStream.exceptions(ifstream::failbit | ifstream::badbit);
+
+    try
+    {
+        readStream.open(this->path, ios::in);
+
+        if(!readStream.is_open()) throw new ifstream::failure("");
+
+        while(!readStream.eof())
+        {
+            string buffer;
+            getline(readStream, buffer);
+
+            this->cipher->appendCipher(buffer+"\n");
+        }
+
+        readStream.close();
+    }
+    catch(ifstream::failure& exception)
+    {
+        cerr<<"Cannot read from file properly"<<endl;
+    }
+
+
+}
