@@ -7,13 +7,12 @@
 class StreamWriter
 {
     std::string path;
-    Cipher* cipher;
 
 public:
 
-    StreamWriter(std::string path, Cipher& cipher);
+    StreamWriter(std::string path);
 
-    void write();
+    StreamWriter& operator<<(Cipher& cipher);
 };
 
 #endif

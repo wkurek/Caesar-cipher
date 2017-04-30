@@ -6,14 +6,12 @@
 
 using namespace std;
 
-StreamWriter::StreamWriter(string path, Cipher& cipher)
+StreamWriter::StreamWriter(string path)
 {
-    this->cipher = &cipher;
     this->path = path;
 }
 
-
-void StreamWriter::write()
+StreamWriter& StreamWriter::operator<<(Cipher& cipher)
 {
     fstream writeStream;
 
@@ -23,7 +21,7 @@ void StreamWriter::write()
 
         if(!writeStream.is_open()) throw new ifstream::failure("");
 
-        writeStream << this->cipher->getCipher();
+        writeStream << cipher.getCipher();
 
         writeStream.close();
 
@@ -33,7 +31,7 @@ void StreamWriter::write()
         cerr<<"Cannot write to file properly"<<endl;
     }
 
-    writeStream << this->cipher->getCipher();
 
-    writeStream.close();
+    return *this;
 }
+

@@ -7,13 +7,12 @@
 class StreamReader
 {
     std::string path;
-    Cipher* cipher;
 
 public:
 
-    StreamReader(std::string path, Cipher& cipher);
+    StreamReader(std::string path);
 
-    void read();
+    StreamReader& operator>>(Cipher& cipher);
 };
 
 #endif

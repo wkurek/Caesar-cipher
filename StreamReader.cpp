@@ -6,14 +6,12 @@
 
 using namespace std;
 
-StreamReader::StreamReader(string path, Cipher& cipher)
+StreamReader::StreamReader(string path)
 {
-    this->cipher = &cipher;
     this->path = path;
 }
 
-
-void StreamReader::read()
+StreamReader& StreamReader::operator>>(Cipher& cipher)
 {
     fstream readStream;
     readStream.exceptions(ifstream::failbit | ifstream::badbit);
@@ -29,7 +27,7 @@ void StreamReader::read()
             string buffer;
             getline(readStream, buffer);
 
-            this->cipher->appendCipher(buffer+"\n");
+            cipher.appendCipher(buffer+"\n");
         }
 
         readStream.close();
@@ -40,4 +38,6 @@ void StreamReader::read()
     }
 
 
+    return *this;
 }
+
