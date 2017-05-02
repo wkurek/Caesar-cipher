@@ -22,6 +22,8 @@ StreamReader& StreamReader::operator>>(Cipher& cipher)
 
         if(!readStream.is_open()) throw new ifstream::failure("");
 
+	if(readStream.peek() == ifstream::traits_type::eof()) return *this; //empty file
+
         while(!readStream.eof())
         {
             string buffer;

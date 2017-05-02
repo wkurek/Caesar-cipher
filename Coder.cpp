@@ -12,7 +12,7 @@ Coder::Coder(Cipher& cipher)
 
 void Coder::encode()
 {
-    if(this->cipher->isDecoded()) return; // cipher is decoded
+    if(!this->cipher->isDecoded()) return; // cipher is decoded
 
     string decodedCipher =  this->cipher->getCipher();
     int shift = this->cipher->getShift();

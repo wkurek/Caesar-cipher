@@ -12,9 +12,15 @@ class Coder
 
 public:
 
+    /// @brief konstruktor
+    /// @param cipher szyfr
     Coder(Cipher& cipher);
 
+    /// @brief funkcja szyfruj¹ca
     void encode();
+
+    /// @brief pobierz zaszyfrowan¹ treœæ szyfru
+    /// @returns zaszyfrowana treœæ szyfru
     std::string getEncodedCipher();
 };
 
