@@ -6,60 +6,41 @@
 #include "StreamReader.h"
 #include "StreamWriter.h"
 #include "Task.h"
+#include "Parser.h"
 
 using namespace std;
 
-bool Task::verifyUserData(int argc, char *argv[])
+bool Task::verifyUserData(Parser& parser)
 {
-    if(argc < 4) return false;
-
-    string mode = argv[3];
-    if(mode.compare("encode")!=0 && mode.compare("decode")!=0) return false;
-
+    if(!(parser.inputFile).compare("") && !(parser.outputFile).compare("") && !(parser.mode).compare("")) return false;
     return true;
 }
 
-string Task::generateEncodedFileName(string path)
+
+void Task::encode(Parser& parser)
 {
-    path.erase(path.length()-4);
-    path.append("ENCODED.txt");
+    Cipher cipher(parser);
 
-    return path;
-}
-
-string Task::generateDecodedFileName(string path)
-{
-    path.erase(path.length()-4);
-    path.append("DECODED.txt");
-
-    return path;
-}
-
-void Task::code(int shift, string path)
-{
-    
-Cipher cipher(shift, true);
-
-    StreamReader reader(path);
+    StreamReader reader(parser.inputFile);
     reader>>cipher;
 
     Coder coder(cipher);
-    coder.encode();
+    coder.process();
 
-    StreamWriter writer(generateEncodedFileName(path));
+    StreamWriter writer(parser.outputFile);
     writer<<cipher;
 }
 
-void Task::decode(int shift, string path)
+void Task::decode(Parser& parser)
 {
-    Cipher cipher(shift, false);
+    Cipher cipher(parser);
 
-    StreamReader reader(path);
+    StreamReader reader(parser.inputFile);
     reader>>cipher;
 
     Decoder decoder(cipher);
-    decoder.decode();
+    decoder.process();
 
-    StreamWriter writer(generateDecodedFileName(path));
+    StreamWriter writer(parser.outputFile);
     writer<<cipher;
 }

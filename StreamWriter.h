@@ -11,12 +11,12 @@ class StreamWriter
 public:
 
     /// @brief konstruktor
-    /// @param path œcie¿ka do pliku z treœci¹ szyfru
+    /// @param path Å›cieÅ¼ka do pliku z treÅ›ciÄ… szyfru
     StreamWriter(std::string path);
 
-    /// @brief operator strumienia wyjœcia
+    /// @brief operator strumienia wyjÅ›cia
     /// @param cipher szyfr
-    /// @returns strumieñ wypisuj¹cy szyfr do pliku
+    /// @returns strumieÅ„ wypisujÄ…cy szyfr do pliku
     StreamWriter& operator<<(Cipher& cipher);
 };
 

@@ -2,42 +2,47 @@
 #define CIPHER
 
 #include <iostream>
+#include "Alphabet.h"
+#include "Parser.h"
 
 class Cipher
 {
     int shift;
     bool decoded;
     std::string cipher;
+    Alphabet alphabet;
 
 public:
 
     /// @brief konstruktor
-    /// @param shift przesuniêcie znaków w szyfrze
-    /// @param decoded wartoœæ logiczn¹ faktu zakodowania szyfru
-    Cipher(int shift, bool decoded);
+    /// @param shift przesuniÃªcie znakÃ³w w szyfrze
+    /// @param decoded wartoÅ›Ä‡ logicznÄ… faktu zakodowania szyfru
+    Cipher(Parser& parser);
 
-    /// @brief pobierz treœæ szyfru
-    /// @returns treœæ szyfru
+    /// @brief pobierz treÅ›Ä‡ szyfru
+    /// @returns treÅ›Ä‡ szyfru
     std::string getCipher();
 
-    /// @brief pobierz przesuniêcie znaków w szyfrze
-    /// @returns przesuniêcie znaków w szyfrze
+    /// @brief pobierz przesuniÄ™cie znakÃ³w w szyfrze
+    /// @returns przesuniÄ™cie znakÃ³w w szyfrze
     int getShift();
 
-    /// @brief sprawdŸ czy szyfr jest zdekodowany
-    /// @returns wartoœæ logiczna faktu zdekodowania szyfru
+    Alphabet getAlphabet();
+
+    /// @brief sprawdÅº czy szyfr jest zdekodowany
+    /// @returns wartoÅ›Ä‡ logiczna faktu zdekodowania szyfru
     bool isDecoded();
 
-    /// @brief ustaw now¹ treœæ szyfru
+    /// @brief ustaw nowÄ… treÅ›Ä‡ szyfru
     /// @param cipher szyfr
     void setCipher(std::string cipher);
 
-    /// @brief dodaj now¹ czêœæ szyfru na koniec istniej¹cego szyfru
-    /// @param cipher nowa czêœæ szyfru
+    /// @brief dodaj nowÄ… czÄ™Å›Ä‡ szyfru na koniec istniejÂ¹cego szyfru
+    /// @param cipher nowa czÄ™Å›Ä‡ szyfru
     void appendCipher(std::string cipher);
 
-    /// @brief ustaw wartoœæ logiczn¹ fakt zakodowania szyfru
-    /// @param decoded wartoœæ logiczn¹ faktu zakodowania szyfru
+    /// @brief ustaw wartoÅ›Ä‡ logicznÄ… faktu zakodowania szyfru
+    /// @param decoded wartoÅ›Ä‡ logiczna faktu zakodowania szyfru
     void setDecoded(bool decoded);
 
 };

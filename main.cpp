@@ -1,22 +1,35 @@
 #include <iostream>
+#include <stdexcept>
 
 #include "Task.h"
+#include "Parser.h"
+
 
 using namespace std;
 
 int main(int argc, char *argv[])
 {
-    if(!Task::verifyUserData(argc, argv))
+    Parser parser;
+
+    try
     {
-        cout<<"Incorrect data. Launching parameters: shift, path to file, encode/decode."<<endl;
+        parser.parse(argc, argv);
+    }
+    catch(std::invalid_argument ia)
+    {
+        cerr<<ia.what()<<endl;
         return 0;
     }
 
-    string mode = argv[3];
+    if(parser.help) return 0;
+    if(!Task::verifyUserData(parser))
+    {
+        cout<<"Incorrect launching parameters"<<endl;
+        return 0;
+    }
 
-
-    if(!mode.compare("encode")) Task::code(atoi(argv[1]), argv[2]);
-    else Task::decode(atoi(argv[1]), argv[2]);
+    if(!parser.mode.compare("encode")) Task::encode(parser);
+    else Task::decode(parser);
 
     return 0;
 }
