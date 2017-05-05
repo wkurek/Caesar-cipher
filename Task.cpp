@@ -12,7 +12,7 @@ using namespace std;
 
 bool Task::verifyUserData(Parser& parser)
 {
-    if(!(parser.inputFile).compare("") && !(parser.outputFile).compare("") && !(parser.mode).compare("")) return false;
+    if(!(parser.inputFile).compare("") || !(parser.outputFile).compare("") || !(parser.mode).compare("")) return false;
     return true;
 }
 

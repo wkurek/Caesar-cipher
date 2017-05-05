@@ -16,7 +16,7 @@ Alphabet::Alphabet(std::string alphabet)
     for(auto sign : alphabet)
     {
         if(isalpha(sign) && islower(sign)) sign = toupper(sign);
-        if(this->contains(sign)) throw std::invalid_argument("Duplicated sign: "+sign);
+        if(this->contains(sign)) throw std::invalid_argument("Duplicated sign");
 
         signs.push_back(sign);
     }

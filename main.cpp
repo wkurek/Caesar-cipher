@@ -17,7 +17,7 @@ int main(int argc, char *argv[])
     }
     catch(std::invalid_argument ia)
     {
-        cerr<<ia.what()<<endl;
+        cerr<<"[INVALID PARAMETERS ERROR]\t"<<ia.what()<<endl;
         return 0;
     }
 
