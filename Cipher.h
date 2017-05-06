@@ -27,6 +27,8 @@ public:
     /// @returns przesunięcie znaków w szyfrze
     int getShift();
 
+    /// @brief funkcja zwracająca składową typu Alphabet
+    /// @returns składową typu Alphabet
     Alphabet getAlphabet();
 
     /// @brief sprawdź czy szyfr jest zdekodowany
