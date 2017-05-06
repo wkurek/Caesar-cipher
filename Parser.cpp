@@ -55,15 +55,14 @@ void Parser::parse(int argc, char *argv[])
         else if(!argument.compare("-h"))
         {
             help = true;
-            cout<<"************ HELP ***********"<<endl;
-            cout<<"\t-m encode/decode"<<endl;
-            cout<<"\t-i input file"<<endl;
-            cout<<"\t-o output file"<<endl;
-            cout<<"\t-s shift"<<endl;
-            cout<<"\t-a alphabet"<<endl;
+            cout<<"\t-m encode/decode (required)"<<endl;
+            cout<<"\t-i input file (required)"<<endl;
+            cout<<"\t-o output file (required)"<<endl;
+            cout<<"\t-s shift (required)"<<endl;
+            cout<<"\t-a alphabet (not required, default: latin alphabet)"<<endl;
             return;
         }
 
-        throw std::invalid_argument("incorrect parameters");
+        throw std::invalid_argument("incorrect parameter");
     }
 }

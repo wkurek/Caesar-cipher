@@ -24,7 +24,7 @@ int main(int argc, char *argv[])
     if(parser.help) return 0;
     if(!Task::verifyUserData(parser))
     {
-        cout<<"Incorrect launching parameters"<<endl;
+        cout<<"[INVALID PARAMETERS ERROR]\t"<<"Incorrect launching parameters"<<endl;
         return 0;
     }
 
