@@ -36,7 +36,7 @@ StreamReader& StreamReader::operator>>(Cipher& cipher)
     }
     catch(ifstream::failure& exception)
     {
-        cerr<<"Cannot read from file properly"<<endl;
+        cerr<<"[INPUTSTREAM ERROR]\t"<<"Cannot read from file properly"<<endl;
     }
 
 

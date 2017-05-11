@@ -2,26 +2,19 @@
 #define CODER
 
 #include <iostream>
-
 #include "Cipher.h"
+#include "Processor.h"
 
-class Coder
+class Coder : public Processor
 {
-    Cipher* cipher;
-    std::string encodedCipher;
-
 public:
 
     /// @brief konstruktor
-    /// @param cipher szyfr
-    Coder(Cipher& cipher);
+    /// @param cipher obiekt reprezentuj¹cy szyfr
+    Coder(Cipher& cipher):Processor(cipher) {};
 
     /// @brief funkcja szyfruj¹ca
-    void encode();
-
-    /// @brief pobierz zaszyfrowan¹ treœæ szyfru
-    /// @returns zaszyfrowana treœæ szyfru
-    std::string getEncodedCipher();
+    void process();
 };
 
 #endif

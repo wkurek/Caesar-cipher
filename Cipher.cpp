@@ -4,12 +4,15 @@
 
 using namespace std;
 
-Cipher::Cipher(int shift, bool decoded)
+Cipher::Cipher(Parser& parser)
 {
-    this->shift = (shift % 26);
-    this->decoded = decoded;
-}
+    this->alphabet = parser.alphabet;
+    this->shift = parser.shift;
 
+    if(!parser.mode.compare("encode")) this->decoded = true;
+    else this->decoded = false;
+
+}
 
 void Cipher::setCipher(std::string cipher)
 {
@@ -35,6 +38,11 @@ string Cipher::getCipher()
 int Cipher::getShift()
 {
     return this->shift;
+}
+
+Alphabet Cipher::getAlphabet()
+{
+    return this->alphabet;
 }
 
 bool Cipher::isDecoded()

@@ -2,36 +2,24 @@
 #define TASK
 
 #include <iostream>
+#include "Parser.h"
 
 class Task
 {
 public:
 
-    /// @brief validacja parametr贸w uruchomieniowych programu
-    /// @param argc ilo艣膰 argument贸w uruchomieniowych
-    /// @param agrv tablica argument贸w uruchomieniowych
-    /// @returns warto艣膰 logiczna poprawno艣ci danych uruchomieniowych
-    static bool verifyUserData(int argc, char *argv[]);
+    /// @brief funkcja sprawdzaj筩a poprawno滄 danych uruchomieniowych
+    /// @param parser obiekt typu Parser zawieraj筩y dane uruchomieniowe
+    /// @returns warto滄 logiczna poprawno渃i danych
+    static bool verifyUserData(Parser& parser);
 
-    /// @brief generowanie nazwy pliku dla zaszyfowanej tre艣ci szyfru
-    /// @param path 艣cie偶ka do pliku z tre艣ci膮 szyfru
-    /// @returns nazwa pliku dla zaszyfowanej tre艣ci szyfru
-    static std::string generateEncodedFileName(std::string path);
+    /// @brief funkcja wykonujaca kompleksowe szyfrowanie
+    /// @param parser obiekt typu Parser zawieraj筩y dane uruchomieniowe
+    static void encode(Parser& parser);
 
-    /// @brief generowanie nazwy pliku dla zdeszyfowanej tre艣ci szyfru
-    /// @param path 艣cie偶ka do pliku z tre艣ci膮 szyfru
-    /// @returns nazwa pliku dla zdeszyfowanej tre艣ci szyfru
-    static std::string generateDecodedFileName(std::string path);
-
-    /// @brief funkcja realizuj膮ca w ca艂o艣ci szyfrowanie
-    /// @param shift przesuni臋cie znak贸w w szyfrze
-    /// @param path 艣cie偶ka do pliku z tre艣ci膮 szyfru
-    static void code(int shift, std::string path);
-
-    /// @brief funkcja realizuj膮ca w ca艂o艣ci deszyfrowanie
-    /// @param shift przesuni臋cie znak贸w w szyfrze
-    /// @param path 艣cie偶ka do pliku z tre艣ci膮 szyfru
-    static void decode(int shift, std::string path);
+    /// @brief funkcja wykonujaca kompleksowe deszyfrowanie
+    /// @param parser obiekt typu Parser zawieraj筩y dane uruchomieniowe
+    static void decode(Parser& parser);
 };
 
 #endif

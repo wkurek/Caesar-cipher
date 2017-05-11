@@ -11,12 +11,12 @@ class StreamReader
 public:
 
     /// @brief konstruktor
-    /// @param path œcie¿ka do pliku z treœci¹ szyfru
+    /// @param path Å›cieÅ¼ka do pliku z treÅ›ciÄ… szyfru
     StreamReader(std::string path);
 
-    /// @brief operator strumienia wejœcia
+    /// @brief operator strumienia wejÅ›cia
     /// @param cipher szyfr
-    /// @returns strumieñ czytaj¹cy szyfr z pliku
+    /// @returns strumieÅ„ czytajÄ…cy szyfr z pliku
     StreamReader& operator>>(Cipher& cipher);
 };
 

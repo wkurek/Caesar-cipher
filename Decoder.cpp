@@ -5,47 +5,26 @@
 
 using namespace std;
 
-Decoder::Decoder(Cipher& cipher)
+void Decoder::process()
 {
-    this->cipher = &cipher;
-}
-
-void Decoder::decode()
-{
-    if(this->cipher->isDecoded()) return; // cipher is decoded
-
-    string encodedCipher =  this->cipher->getCipher();
     int shift = this->cipher->getShift();
+    string cipherText = this->cipher->getCipher();
 
-    for(auto c : encodedCipher)
+    for(char c : cipherText)
     {
-        if(isupper(c) && isalpha(c))
-        {
-            c-=65;
-            c-=shift;
-            c%=26;
+        int position = this->cipher->getAlphabet().getPosition(c);
 
-            if(c < 0) c+=91;
-            else c+=65;
-        }
-        else if(islower(c) && isalpha(c))
+        if(position>=0)
         {
-            c-=97;
-            c-=shift;
-            c%=26;
+            char sign = this->cipher->getAlphabet()[position - shift];
 
-            if(c < 0) c+=123;
-            else c+=97;
+            if(isalpha(c) && islower(c)) c = tolower(sign);
+            else c = sign;
         }
 
-        this->decodedCipher.push_back((char) c);
+        this->text.push_back(c);
     }
 
-    this->cipher->setCipher(this->decodedCipher);
+    this->cipher->setCipher(this->text);
     this->cipher->setDecoded(true);
-}
-
-string Decoder::getDecodedCipher()
-{
-    return this->decodedCipher;
 }

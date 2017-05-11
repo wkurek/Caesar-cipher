@@ -28,7 +28,7 @@ StreamWriter& StreamWriter::operator<<(Cipher& cipher)
     }
     catch(ifstream::failure& exception)
     {
-        cerr<<"Cannot write to file properly"<<endl;
+        cerr<<"[OUTPUTSTREAM ERROR]\t"<<"Cannot write to file properly"<<endl;
     }
 
 
